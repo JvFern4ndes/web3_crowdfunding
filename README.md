@@ -26,6 +26,7 @@ Execute o seguinte comando no terminal para instalar e iniciar a configuração 
 
 ```sh
 npx --force thirdweb@latest create --contract
+```
 
 ### Passo 2: Seguir as Instruções
 
