@@ -20,33 +20,33 @@ Nosso objetivo é democratizar o acesso ao financiamento coletivo, oferecendo um
 
 ### Funcionalidades
 
-Cadastro de Projetos:
+Cadastro de Projetos:<br>
 Criadores de projetos podem registrar suas iniciativas, descrevendo objetivos, metas de financiamento e recompensas para os apoiadores.
 
-Contribuições Seguras:
+Contribuições Seguras:<br>
 Apoiadores podem contribuir com projetos usando criptomoedas, garantindo transações seguras e transparentes via smart contracts.
 
-Descentralização:
+Descentralização:<br>
 Utilizamos a infraestrutura da blockchain para garantir a imutabilidade e a transparência das transações, eliminando a necessidade de intermediários.
 
-Recompensas Automatizadas:
+Recompensas Automatizadas:<br>
 Os smart contracts gerenciam a distribuição de recompensas automaticamente, com base nos critérios definidos pelos criadores dos projetos.
 
-Gestão de Campanhas:
+Gestão de Campanhas:<br>
 Ferramentas para os criadores monitorarem o progresso das suas campanhas de financiamento, visualizarem contribuições e gerenciarem recompensas.
 
 ### Tecnologias Utilizadas
 
-Solidity:
+Solidity:<br>
 Para desenvolvimento de smart contracts seguros e eficientes.
 
-Ethereum:
+Ethereum:<br>
 Blockchain principal para execução dos contratos inteligentes.
 
-React:
+React:<br>
 Framework de front-end para construção de uma interface de usuário dinâmica e responsiva.
 
-ThirdWeb:
+ThirdWeb:<br>
 Ferramenta para simplificar o desenvolvimento e a integração com contratos inteligentes.
 
 ## Configuração do Ambiente
