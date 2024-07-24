@@ -94,7 +94,7 @@ Todas as dependências necessárias para o desenvolvimento e execução do proje
 
 ## Sobre o contrato inteligente (CrowdFunding.sol)
 
-Estrutura `Campaign`
+### Estrutura `Campaign`
 
 ```sh
 struct Campaign {
@@ -110,7 +110,7 @@ struct Campaign {
 }
 ```
 
-Funções do contrato inteligente, incluindo seus propósitos, parâmetros de entrada e saída.
+### Funções do contrato inteligente, incluindo seus propósitos, parâmetros de entrada e saída.
 
 `function createCampaign`
 
@@ -136,9 +136,7 @@ _target (uint256): O valor alvo a ser arrecadado pela campanha.
 _deadline (uint256): A data limite para arrecadar os fundos (em timestamp Unix).
 _image (string memory): Um link para a imagem da campanha.
 
-Retorno:
-
-uint256: O ID da campanha recém-criada.
+Retorno: uint256: O ID da campanha recém-criada.
 
 `function donateToCampaign`
 
@@ -148,9 +146,7 @@ function donateToCampaign(uint256 _id) public payable
 
 Descrição: Permite que os usuários façam doações para uma campanha específica.
 
-Parâmetros:
-
-_id (uint256): O ID da campanha para a qual a doação está sendo feita.
+Parâmetros: _id (uint256): O ID da campanha para a qual a doação está sendo feita.
 
 Retorno: Nenhum.
 
@@ -168,9 +164,7 @@ function getDonators(uint256 _id) view public returns (address[] memory, uint256
 
 Descrição: Retorna a lista de doadores e o valor das doações para uma campanha específica.
 
-Parâmetros:
-
-_id (uint256): O ID da campanha.
+Parâmetros: _id (uint256): O ID da campanha.
 
 Retorno:
 
@@ -187,13 +181,9 @@ Descrição: Retorna uma lista de todas as campanhas criadas.
 
 Parâmetros: Nenhum.
 
-Retorno:
+Retorno: Campaign[]: Uma lista de todas as campanhas criadas.
 
-Campaign[]: Uma lista de todas as campanhas criadas.
-
-Detalhes:
-
-A função cria uma lista de todas as campanhas com base no número de campanhas existentes e retorna essa lista.
+Detalhes: A função cria uma lista de todas as campanhas com base no número de campanhas existentes e retorna essa lista.
 
 ## Comandos Úteis
 
