@@ -110,15 +110,15 @@ struct Campaign {
 }
 ```
 
-`owner (address)`: O endereço do proprietário da campanha.<br>
-`title (string)`: O título da campanha.<br>
-`description (string)`: A descrição da campanha.<br>
-`target (uint256)`: O valor alvo a ser arrecadado pela campanha.<br>
-`deadline (uint256)`: A data limite para arrecadar os fundos (em timestamp Unix).<br>
-`amountCollected (uint256)`: O valor total arrecadado até o momento.<br>
-`image (string)`: Um link para a imagem da campanha.<br>
-`donators (address[])`: Uma lista de endereços dos doadores.<br>
-`donations (uint256[])`: Uma lista de valores das doações correspondentes.<br>
+`owner (address)` : O endereço do proprietário da campanha.<br>
+`title (string)` : O título da campanha.<br>
+`description (string)` : A descrição da campanha.<br>
+`target (uint256)` : O valor alvo a ser arrecadado pela campanha.<br>
+`deadline (uint256)` : A data limite para arrecadar os fundos (em timestamp Unix).<br>
+`amountCollected (uint256)` : O valor total arrecadado até o momento.<br>
+`image (string)` : Um link para a imagem da campanha.<br>
+`donators (address[])` : Uma lista de endereços dos doadores.<br>
+`donations (uint256[])` : Uma lista de valores das doações correspondentes.<br>
 
 ### Funções do contrato inteligente, incluindo seus propósitos, parâmetros de entrada e saída.
 
@@ -136,22 +136,21 @@ function createCampaign(
 ```
 
 #### Descrição:
-Descrição:
 
 Cria uma nova campanha de financiamento coletivo.
 
-#### `Parâmetros`:
+#### `Parâmetros` :
 
-`_owner (address)`: O endereço do proprietário da campanha.<br>
-`_title (string memory)`: O título da campanha.<br>
-`_description (string memory)`: A descrição da campanha.<br>
-`_target (uint256)`: O valor alvo a ser arrecadado pela campanha.<br>
-`_deadline (uint256)`: A data limite para arrecadar os fundos (em timestamp Unix).<br>
-`_image (string memory)`: Um link para a imagem da campanha.<br>
+`_owner (address)` : O endereço do proprietário da campanha.<br>
+`_title (string memory)` : O título da campanha.<br>
+`_description (string memory)` : A descrição da campanha.<br>
+`_target (uint256)` : O valor alvo a ser arrecadado pela campanha.<br>
+`_deadline (uint256)` : A data limite para arrecadar os fundos (em timestamp Unix).<br>
+`_image (string memory)` : Um link para a imagem da campanha.<br>
 
-#### `Retorno`:
+#### `Retorno` :
 
-`uint256`: O ID da campanha recém-criada.
+`uint256` : O ID da campanha recém-criada.
 
 ### function `donateToCampaign`
 
@@ -163,11 +162,11 @@ function donateToCampaign(uint256 _id) public payable
 
 Permite que os usuários façam doações para uma campanha específica.
 
-#### `Parâmetros`:
+#### `Parâmetros` :
 
-`_id (uint256)`: O ID da campanha para a qual a doação está sendo feita.
+`_id (uint256)` : O ID da campanha para a qual a doação está sendo feita.
 
-#### `Retorno`:
+#### `Retorno` :
 
 Nenhum.
 
@@ -187,14 +186,14 @@ function getDonators(uint256 _id) view public returns (address[] memory, uint256
 
 Retorna a lista de doadores e o valor das doações para uma campanha específica.
 
-#### `Parâmetros`: 
+#### `Parâmetros` : 
 
-`_id (uint256)`: O ID da campanha.
+`_id (uint256)` : O ID da campanha.
 
-#### `Retorno`:
+#### `Retorno` :
 
-`address[]`: Uma lista de endereços dos doadores.
-`uint256[]`: Uma lista de valores das doações correspondentes.
+`address[]` : Uma lista de endereços dos doadores.<br>
+`uint256[]` : Uma lista de valores das doações correspondentes.
 
 ### function `getCampaigns`
 
@@ -206,13 +205,13 @@ function getCampaigns() public view returns (Campaign[] memory)
 
 Retorna uma lista de todas as campanhas criadas.
 
-#### `Parâmetros`:
+#### `Parâmetros` :
 
 Nenhum.
 
-#### `Retorno`:
+#### `Retorno` :
 
-`Campaign[]`: Uma lista de todas as campanhas criadas.
+`Campaign[]` : Uma lista de todas as campanhas criadas.
 
 #### Detalhes: 
 
