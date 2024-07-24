@@ -8,7 +8,7 @@ Este projeto é uma plataforma de financiamento coletivo (crowdfunding) baseada 
 2. [Configuração do Ambiente](#configuração-do-ambiente)
 3. [Estrutura do Projeto](#estrutura-do-projeto)
 4. [Dependências](#dependências)
-5. [Sobre o contrato inteligente](#sobre-o-contrato-inteligente-(crowdfunding.sol))
+5. [Sobre o contrato inteligente](#sobre-o-contrato-inteligente)
 6. [Comandos Úteis](#comandos-úteis)
 7. [Contribuindo](#contribuindo)
 8. [Licença](#licença)
@@ -92,7 +92,7 @@ Todas as dependências necessárias para o desenvolvimento e execução do proje
 - Thirdweb
 - Solc (Solidity compiler)
 
-## Sobre o contrato inteligente (CrowdFunding.sol)
+## Sobre o contrato inteligente
 
 ### Estrutura `Campaign`
 
