@@ -110,19 +110,19 @@ struct Campaign {
 }
 ```
 
-`owner (address):` O endereço do proprietário da campanha.<br>
-`title (string):` O título da campanha.<br>
-`description (string):` A descrição da campanha.<br>
-`target (uint256):` O valor alvo a ser arrecadado pela campanha.<br>
-`deadline (uint256):` A data limite para arrecadar os fundos (em timestamp Unix).<br>
-`amountCollected (uint256):` O valor total arrecadado até o momento.<br>
-`image (string):` Um link para a imagem da campanha.<br>
-`donators (address[]):` Uma lista de endereços dos doadores.<br>
-`donations (uint256[]):` Uma lista de valores das doações correspondentes.<br>
+`owner (address)` O endereço do proprietário da campanha.<br>
+`title (string)`: O título da campanha.<br>
+`description (string)`: A descrição da campanha.<br>
+`target (uint256)`: O valor alvo a ser arrecadado pela campanha.<br>
+`deadline (uint256)`: A data limite para arrecadar os fundos (em timestamp Unix).<br>
+`amountCollected (uint256)`: O valor total arrecadado até o momento.<br>
+`image (string)`: Um link para a imagem da campanha.<br>
+`donators (address[])`: Uma lista de endereços dos doadores.<br>
+`donations (uint256[])`: Uma lista de valores das doações correspondentes.<br>
 
 ### Funções do contrato inteligente, incluindo seus propósitos, parâmetros de entrada e saída.
 
-`function createCampaign`
+#### Function `createCampaign`
 
 ```sh
 function createCampaign(
@@ -137,18 +137,20 @@ function createCampaign(
 
 Descrição: Cria uma nova campanha de financiamento coletivo.
 
-Parâmetros:
+`Parâmetros`:
 
-_owner (address): O endereço do proprietário da campanha.
-_title (string memory): O título da campanha.
-_description (string memory): A descrição da campanha.
-_target (uint256): O valor alvo a ser arrecadado pela campanha.
-_deadline (uint256): A data limite para arrecadar os fundos (em timestamp Unix).
-_image (string memory): Um link para a imagem da campanha.
+`_owner (address)`: O endereço do proprietário da campanha.
+`_title (string memory)`: O título da campanha.
+`_description (string memory)`: A descrição da campanha.
+`_target (uint256)`: O valor alvo a ser arrecadado pela campanha.
+`_deadline (uint256)`: A data limite para arrecadar os fundos (em timestamp Unix).
+`_image (string memory)`: Um link para a imagem da campanha.
 
-Retorno: uint256: O ID da campanha recém-criada.
+`Retorno`:
 
-`function donateToCampaign`
+`uint256`: O ID da campanha recém-criada.
+
+#### function `donateToCampaign`
 
 ```sh
 function donateToCampaign(uint256 _id) public payable
@@ -156,9 +158,11 @@ function donateToCampaign(uint256 _id) public payable
 
 Descrição: Permite que os usuários façam doações para uma campanha específica.
 
-Parâmetros: _id (uint256): O ID da campanha para a qual a doação está sendo feita.
+`Parâmetros`:
 
-Retorno: Nenhum.
+`_id (uint256)`: O ID da campanha para a qual a doação está sendo feita.
+
+`Retorno`: Nenhum.
 
 Detalhes:
 
@@ -166,7 +170,7 @@ A função adiciona o endereço do doador e o valor da doação à lista de doad
 Transfere o valor da doação para o proprietário da campanha.
 Se a transferência for bem-sucedida, atualiza o valor total arrecadado pela campanha.
 
-`function getDonators`
+#### function `getDonators`
 
 ```sh
 function getDonators(uint256 _id) view public returns (address[] memory, uint256[] memory)
@@ -174,14 +178,14 @@ function getDonators(uint256 _id) view public returns (address[] memory, uint256
 
 Descrição: Retorna a lista de doadores e o valor das doações para uma campanha específica.
 
-Parâmetros: _id (uint256): O ID da campanha.
+`Parâmetros`: _id (uint256): O ID da campanha.
 
-Retorno:
+`Retorno`:
 
-address[]: Uma lista de endereços dos doadores.
-uint256[]: Uma lista de valores das doações correspondentes.
+`address[]`: Uma lista de endereços dos doadores.
+`uint256[]`: Uma lista de valores das doações correspondentes.
 
-`function getCampaigns`
+#### function `getCampaigns`
 
 ```sh
 function getCampaigns() public view returns (Campaign[] memory)
@@ -189,9 +193,11 @@ function getCampaigns() public view returns (Campaign[] memory)
 
 Descrição: Retorna uma lista de todas as campanhas criadas.
 
-Parâmetros: Nenhum.
+`Parâmetros`: Nenhum.
 
-Retorno: Campaign[]: Uma lista de todas as campanhas criadas.
+`Retorno`:
+
+`Campaign[]`: Uma lista de todas as campanhas criadas.
 
 Detalhes: A função cria uma lista de todas as campanhas com base no número de campanhas existentes e retorna essa lista.
 
@@ -221,4 +227,4 @@ Este projeto é licenciado sob a MIT License.
 
 # Backlog da Documentação
 
-1 - isntalação do dotenv
+1 - instalação do dotenv
