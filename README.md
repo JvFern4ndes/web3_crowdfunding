@@ -8,9 +8,10 @@ Este projeto é uma plataforma de financiamento coletivo (crowdfunding) baseada 
 2. [Configuração do Ambiente](#configuração-do-ambiente)
 3. [Estrutura do Projeto](#estrutura-do-projeto)
 4. [Dependências](#dependências)
-5. [Comandos Úteis](#comandos-úteis)
-6. [Contribuindo](#contribuindo)
-7. [Licença](#licença)
+5. [Sobre o contrato inteligente](#sobre-o-contrato-inteligente-(crowdfunding.sol))
+6. [Comandos Úteis](#comandos-úteis)
+7. [Contribuindo](#contribuindo)
+8. [Licença](#licença)
 
 ## Introdução
 
@@ -90,6 +91,109 @@ Todas as dependências necessárias para o desenvolvimento e execução do proje
 - Node.js
 - Thirdweb
 - Solc (Solidity compiler)
+
+## Sobre o contrato inteligente (CrowdFunding.sol)
+
+Estrutura `Campaign`
+
+```sh
+struct Campaign {
+    address owner;
+    string title;
+    string description;
+    uint256 target;
+    uint256 deadline;
+    uint256 amountCollected;
+    string image;
+    address[] donators;
+    uint256[] donations;
+}
+```
+
+Funções do contrato inteligente, incluindo seus propósitos, parâmetros de entrada e saída.
+
+`function createCampaign`
+
+```sh
+function createCampaign(
+    address _owner,
+    string memory _title,
+    string memory _description,
+    uint256 _target,
+    uint256 _deadline,
+    string memory _image
+) public returns (uint256)
+```
+
+Descrição: Cria uma nova campanha de financiamento coletivo.
+
+Parâmetros:
+
+_owner (address): O endereço do proprietário da campanha.
+_title (string memory): O título da campanha.
+_description (string memory): A descrição da campanha.
+_target (uint256): O valor alvo a ser arrecadado pela campanha.
+_deadline (uint256): A data limite para arrecadar os fundos (em timestamp Unix).
+_image (string memory): Um link para a imagem da campanha.
+
+Retorno:
+
+uint256: O ID da campanha recém-criada.
+
+`function donateToCampaign`
+
+```sh
+function donateToCampaign(uint256 _id) public payable
+```
+
+Descrição: Permite que os usuários façam doações para uma campanha específica.
+
+Parâmetros:
+
+_id (uint256): O ID da campanha para a qual a doação está sendo feita.
+
+Retorno: Nenhum.
+
+Detalhes:
+
+A função adiciona o endereço do doador e o valor da doação à lista de doadores e doações da campanha.
+Transfere o valor da doação para o proprietário da campanha.
+Se a transferência for bem-sucedida, atualiza o valor total arrecadado pela campanha.
+
+`function getDonators`
+
+```sh
+function getDonators(uint256 _id) view public returns (address[] memory, uint256[] memory)
+```
+
+Descrição: Retorna a lista de doadores e o valor das doações para uma campanha específica.
+
+Parâmetros:
+
+_id (uint256): O ID da campanha.
+
+Retorno:
+
+address[]: Uma lista de endereços dos doadores.
+uint256[]: Uma lista de valores das doações correspondentes.
+
+`function getCampaigns`
+
+```sh
+function getCampaigns() public view returns (Campaign[] memory)
+```
+
+Descrição: Retorna uma lista de todas as campanhas criadas.
+
+Parâmetros: Nenhum.
+
+Retorno:
+
+Campaign[]: Uma lista de todas as campanhas criadas.
+
+Detalhes:
+
+A função cria uma lista de todas as campanhas com base no número de campanhas existentes e retorna essa lista.
 
 ## Comandos Úteis
 
