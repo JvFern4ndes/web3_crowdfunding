@@ -110,7 +110,7 @@ struct Campaign {
 }
 ```
 
-`owner (address)` O endereço do proprietário da campanha.<br>
+`owner (address)`: O endereço do proprietário da campanha.<br>
 `title (string)`: O título da campanha.<br>
 `description (string)`: A descrição da campanha.<br>
 `target (uint256)`: O valor alvo a ser arrecadado pela campanha.<br>
@@ -122,7 +122,7 @@ struct Campaign {
 
 ### Funções do contrato inteligente, incluindo seus propósitos, parâmetros de entrada e saída.
 
-#### Function `createCampaign`
+### Function `createCampaign`
 
 ```sh
 function createCampaign(
@@ -135,71 +135,87 @@ function createCampaign(
 ) public returns (uint256)
 ```
 
-Descrição: Cria uma nova campanha de financiamento coletivo.
+#### Descrição: 
 
-`Parâmetros`:
+Cria uma nova campanha de financiamento coletivo.
 
-`_owner (address)`: O endereço do proprietário da campanha.
-`_title (string memory)`: O título da campanha.
-`_description (string memory)`: A descrição da campanha.
-`_target (uint256)`: O valor alvo a ser arrecadado pela campanha.
-`_deadline (uint256)`: A data limite para arrecadar os fundos (em timestamp Unix).
-`_image (string memory)`: Um link para a imagem da campanha.
+#### `Parâmetros`:
 
-`Retorno`:
+`_owner (address)`: O endereço do proprietário da campanha.<br>
+`_title (string memory)`: O título da campanha.<br>
+`_description (string memory)`: A descrição da campanha.<br>
+`_target (uint256)`: O valor alvo a ser arrecadado pela campanha.<br>
+`_deadline (uint256)`: A data limite para arrecadar os fundos (em timestamp Unix).<br>
+`_image (string memory)`: Um link para a imagem da campanha.<br>
+
+#### `Retorno`:
 
 `uint256`: O ID da campanha recém-criada.
 
-#### function `donateToCampaign`
+### function `donateToCampaign`
 
 ```sh
 function donateToCampaign(uint256 _id) public payable
 ```
 
-Descrição: Permite que os usuários façam doações para uma campanha específica.
+#### Descrição:
 
-`Parâmetros`:
+Permite que os usuários façam doações para uma campanha específica.
+
+#### `Parâmetros`:
 
 `_id (uint256)`: O ID da campanha para a qual a doação está sendo feita.
 
-`Retorno`: Nenhum.
+#### `Retorno`:
 
-Detalhes:
+Nenhum.
+
+#### Detalhes:
 
 A função adiciona o endereço do doador e o valor da doação à lista de doadores e doações da campanha.
 Transfere o valor da doação para o proprietário da campanha.
 Se a transferência for bem-sucedida, atualiza o valor total arrecadado pela campanha.
 
-#### function `getDonators`
+### function `getDonators`
 
 ```sh
 function getDonators(uint256 _id) view public returns (address[] memory, uint256[] memory)
 ```
 
-Descrição: Retorna a lista de doadores e o valor das doações para uma campanha específica.
+#### Descrição:
 
-`Parâmetros`: _id (uint256): O ID da campanha.
+Retorna a lista de doadores e o valor das doações para uma campanha específica.
 
-`Retorno`:
+#### `Parâmetros`: 
+
+`_id (uint256)`: O ID da campanha.
+
+#### `Retorno`:
 
 `address[]`: Uma lista de endereços dos doadores.
 `uint256[]`: Uma lista de valores das doações correspondentes.
 
-#### function `getCampaigns`
+### function `getCampaigns`
 
 ```sh
 function getCampaigns() public view returns (Campaign[] memory)
 ```
 
-Descrição: Retorna uma lista de todas as campanhas criadas.
+#### Descrição: 
 
-`Parâmetros`: Nenhum.
+Retorna uma lista de todas as campanhas criadas.
 
-`Retorno`:
+#### `Parâmetros`:
+
+Nenhum.
+
+#### `Retorno`:
 
 `Campaign[]`: Uma lista de todas as campanhas criadas.
 
-Detalhes: A função cria uma lista de todas as campanhas com base no número de campanhas existentes e retorna essa lista.
+#### Detalhes: 
+
+A função cria uma lista de todas as campanhas com base no número de campanhas existentes e retorna essa lista.
 
 ## Comandos Úteis
 
