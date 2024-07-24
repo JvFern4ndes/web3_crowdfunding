@@ -110,15 +110,15 @@ struct Campaign {
 }
 ```
 
-`owner (address)`: O endereço do proprietário da campanha.<br>
-`title (string)`: O título da campanha.<br>
-`description (string)`: A descrição da campanha.<br>
-`target (uint256)`: O valor alvo a ser arrecadado pela campanha.<br>
-`deadline (uint256)`: A data limite para arrecadar os fundos (em timestamp Unix).<br>
-`amountCollected (uint256)`: O valor total arrecadado até o momento.<br>
-`image (string)`: Um link para a imagem da campanha.<br>
-`donators (address[])`: Uma lista de endereços dos doadores.<br>
-`donations (uint256[])`: Uma lista de valores das doações correspondentes.<br>
+`owner (address):` O endereço do proprietário da campanha.<br>
+`title (string):` O título da campanha.<br>
+`description (string):` A descrição da campanha.<br>
+`target (uint256):` O valor alvo a ser arrecadado pela campanha.<br>
+`deadline (uint256):` A data limite para arrecadar os fundos (em timestamp Unix).<br>
+`amountCollected (uint256):` O valor total arrecadado até o momento.<br>
+`image (string):` Um link para a imagem da campanha.<br>
+`donators (address[]):` Uma lista de endereços dos doadores.<br>
+`donations (uint256[]):` Uma lista de valores das doações correspondentes.<br>
 
 ### Funções do contrato inteligente, incluindo seus propósitos, parâmetros de entrada e saída.
 
