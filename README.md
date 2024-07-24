@@ -110,6 +110,16 @@ struct Campaign {
 }
 ```
 
+owner (address): O endereço do proprietário da campanha.
+title (string): O título da campanha.
+description (string): A descrição da campanha.
+target (uint256): O valor alvo a ser arrecadado pela campanha.
+deadline (uint256): A data limite para arrecadar os fundos (em timestamp Unix).
+amountCollected (uint256): O valor total arrecadado até o momento.
+image (string): Um link para a imagem da campanha.
+donators (address[]): Uma lista de endereços dos doadores.
+donations (uint256[]): Uma lista de valores das doações correspondentes.
+
 ### Funções do contrato inteligente, incluindo seus propósitos, parâmetros de entrada e saída.
 
 `function createCampaign`
