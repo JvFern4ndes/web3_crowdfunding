@@ -90,38 +90,43 @@ Todas as dependências necessárias para o desenvolvimento e execução do proje
 
 ### Node.js
 
-O Node.js é uma dependência fundamental quando você está utilizando o web3.js em um ambiente de desenvolvimento JavaScript. O Node.js fornece o runtime necessário para executar JavaScript no lado do servidor, permitindo que você utilize bibliotecas como o web3.js para interagir com a blockchain Ethereum.
+Node.js é um ambiente de execução JavaScript assíncrono, orientado a eventos, que permite a execução de código JavaScript no lado do servidor. Desenvolvido inicialmente por Ryan Dahl em 2009, o Node.js utiliza o motor V8 do Google Chrome para executar código JavaScript fora de um navegador.
 
-#### Porquê o Node.js é necessário:
+#### Principais Características do Node.js
 
-1 - Runtime JavaScript no Servidor: Node.js permite que você execute JavaScript fora do navegador, essencial para scripts e aplicações server-side.
+- **Assíncrono e Orientado a Eventos**: Node.js utiliza um modelo de I/O não-bloqueante, permitindo que operações como leitura/escrita de arquivos, operações de rede e consultas a banco de dados sejam realizadas de forma assíncrona. Isso resulta em alta performance e escalabilidade para aplicações que precisam lidar com um grande número de conexões simultâneas.
+- **Motor V8**: Utiliza o motor V8 do Google Chrome para compilar código JavaScript diretamente para código de máquina, proporcionando alta velocidade de execução.
+- **NPM (Node Package Manager)**: Node.js vem com um gerenciador de pacotes integrado chamado npm, que facilita a instalação e gerenciamento de bibliotecas e dependências de terceiros.
 
-2 - Gerenciamento de Pacotes: Com o Node.js vem o npm (Node Package Manager), que facilita a instalação e o gerenciamento de dependências como o web3.js.
+#### Requisitos
 
-3 - Ambiente de Desenvolvimento: Node.js oferece um ambiente robusto para desenvolvimento, teste e execução de aplicações JavaScript que interagem com a blockchain.
+Para executar este projeto, você precisará ter o Node.js instalado em sua máquina. É recomendado utilizar a mesma versão de Node.js que foi usada para desenvolver o projeto para evitar problemas de compatibilidade.
 
-#### Para instalar Node.js e npm, siga estas instruções:
+O projeto foi desenvolvido usando a seguinte versão do Node.js:
 
-1 - Download e Instalação:
+```plaintext
+Node.js v20.14.0
+````
 
-- Acesse o site oficial do Node.js.
-- Baixe o instalador adequado para o seu sistema operacional.
-- Siga as instruções de instalação.
+#### Instalação do Node.js
 
-2 - Verificar Instalação:
+**1- Você pode baixar e instalar o Node.js a partir do site oficial.**
 
-- Após a instalação, abra o terminal (ou prompt de comando no Windows).
-- Verifique se o Node.js está instalado corretamente executando:
+- Acesse nodejs.org.
+- Baixe o instalador da versão recomendada (LTS).
+- Execute o instalador e siga as instruções.
+
+**2 - Verificação da Instalação**
+
+Após instalar o Node.js, verifique a instalação executando:
 
 ```sh
 node -v
+
 ```
 
-- Verifique se o npm está instalado corretamente executando:
+##
 
-```sh
-npm -v
-```
 ### Thirdweb
 ### Solc (Solidity compiler)
 
