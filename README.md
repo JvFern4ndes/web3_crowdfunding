@@ -231,3 +231,6 @@ Este projeto é licenciado sob a MIT License.
 # Backlog da Documentação
 
 1 - instalação do dotenv
+2 - instalação dos pacotes web3 e solc
+3 - criação do arquivo compile.js
+4 - criação do arquivo deploy.js
