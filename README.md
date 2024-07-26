@@ -88,9 +88,42 @@ crowdfunding/
 
 Todas as dependências necessárias para o desenvolvimento e execução do projeto.
 
-- Node.js
-- Thirdweb
-- Solc (Solidity compiler)
+### Node.js
+
+O Node.js é uma dependência fundamental quando você está utilizando o web3.js em um ambiente de desenvolvimento JavaScript. O Node.js fornece o runtime necessário para executar JavaScript no lado do servidor, permitindo que você utilize bibliotecas como o web3.js para interagir com a blockchain Ethereum.
+
+#### Porquê o Node.js é necessário:
+
+1 - Runtime JavaScript no Servidor: Node.js permite que você execute JavaScript fora do navegador, essencial para scripts e aplicações server-side.
+
+2 - Gerenciamento de Pacotes: Com o Node.js vem o npm (Node Package Manager), que facilita a instalação e o gerenciamento de dependências como o web3.js.
+
+3 - Ambiente de Desenvolvimento: Node.js oferece um ambiente robusto para desenvolvimento, teste e execução de aplicações JavaScript que interagem com a blockchain.
+
+#### Para instalar Node.js e npm, siga estas instruções:
+
+1 - Download e Instalação:
+
+- Acesse o site oficial do Node.js.
+- Baixe o instalador adequado para o seu sistema operacional.
+- Siga as instruções de instalação.
+
+2 - Verificar Instalação:
+
+- Após a instalação, abra o terminal (ou prompt de comando no Windows).
+- Verifique se o Node.js está instalado corretamente executando:
+
+```sh
+node -v
+```
+
+- Verifique se o npm está instalado corretamente executando:
+
+```sh
+npm -v
+```
+### Thirdweb
+### Solc (Solidity compiler)
 
 ## Sobre o contrato inteligente
 
