@@ -112,7 +112,7 @@ Node.js v20.14.0
 
 **1- Você pode baixar e instalar o Node.js a partir do site oficial.**
 
-- Acesse nodejs.org.
+- Acesse o [site oficial do Node.js](https://nodejs.org/).
 - Baixe o instalador da versão recomendada (LTS).
 - Execute o instalador e siga as instruções.
 
