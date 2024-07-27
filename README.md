@@ -88,9 +88,61 @@ crowdfunding/
 
 Todas as dependências necessárias para o desenvolvimento e execução do projeto.
 
-- Node.js
-- Thirdweb
-- Solc (Solidity compiler)
+### Node.js
+
+Node.js é um ambiente de execução JavaScript assíncrono, orientado a eventos, que permite a execução de código JavaScript no lado do servidor. Desenvolvido inicialmente por Ryan Dahl em 2009, o Node.js utiliza o motor V8 do Google Chrome para executar código JavaScript fora de um navegador.
+
+#### Principais Características do Node.js
+
+- **Assíncrono e Orientado a Eventos**: Node.js utiliza um modelo de I/O não-bloqueante, permitindo que operações como leitura/escrita de arquivos, operações de rede e consultas a banco de dados sejam realizadas de forma assíncrona. Isso resulta em alta performance e escalabilidade para aplicações que precisam lidar com um grande número de conexões simultâneas.
+- **Motor V8**: Utiliza o motor V8 do Google Chrome para compilar código JavaScript diretamente para código de máquina, proporcionando alta velocidade de execução.
+- **NPM (Node Package Manager)**: Node.js vem com um gerenciador de pacotes integrado chamado npm, que facilita a instalação e gerenciamento de bibliotecas e dependências de terceiros.
+
+#### Requisitos
+
+Para executar este projeto, você precisará ter o Node.js instalado em sua máquina. É recomendado utilizar a mesma versão de Node.js que foi usada para desenvolver o projeto para evitar problemas de compatibilidade.
+
+O projeto foi desenvolvido usando a seguinte versão do Node.js:
+
+```sh
+Node.js v20.14.0
+````
+
+#### Instalação do Node.js
+
+**1- Você pode baixar e instalar o Node.js a partir do site oficial.**
+
+- Acesse o [site oficial do Node.js](https://nodejs.org/).
+- Baixe o instalador da versão recomendada (LTS).
+- Execute o instalador e siga as instruções.
+
+**2 - Verificação da Instalação**
+
+Após instalar o Node.js, verifique a instalação executando:
+
+```sh
+node -v
+
+```
+
+##
+
+### dotenv
+
+O projeto utiliza a biblioteca dotenv para carregar variáveis de ambiente a partir de um arquivo .env. Isso é útil para manter configurações sensíveis e específicas do ambiente fora do código-fonte.
+
+#### Instalação
+
+Instale o dotenv usando o npm:
+
+````sh
+npm install dotenv
+````
+
+##
+
+### Thirdweb
+### Solc (Solidity compiler)
 
 ## Sobre o contrato inteligente
 
@@ -231,9 +283,14 @@ Este projeto é licenciado sob a MIT License.
 # Backlog da Documentação
 
 2 - instalação dos pacotes web3 e solc
+<<<<<<< HEAD
 3 - Sobre o thirdweb não ter funcionado e ao invés disso eu ter usado apenas o web3.js
 4 - criação do arquivo compile.js
 5 - criação do arquivo deploy.js
 6 - Sobre a utilização do infura para fazer o deploy
 7 - Utilização do thirdweb para criar a interface (criada com vite)
 8 - instalação do react-router-dom
+=======
+3 - criação do arquivo compile.js
+4 - criação do arquivo deploy.js
+>>>>>>> cd3985fd2ea0f3eb0aa056014b8bfeb28f60f4cc
