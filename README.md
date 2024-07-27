@@ -104,7 +104,7 @@ Para executar este projeto, você precisará ter o Node.js instalado em sua máq
 
 O projeto foi desenvolvido usando a seguinte versão do Node.js:
 
-```plaintext
+```sh
 Node.js v20.14.0
 ````
 
@@ -135,8 +135,9 @@ O projeto utiliza a biblioteca dotenv para carregar variáveis de ambiente a par
 
 Instale o dotenv usando o npm:
 
-sh
+````sh
 npm install dotenv
+````
 
 ##
 
