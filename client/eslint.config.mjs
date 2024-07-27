@@ -12,6 +12,9 @@ export default [
             parserOptions: {
                 ecmaVersion: 12,
                 sourceType: 'module',
+                ecmaFeatures: {
+                    jsx: true,
+                },
             },
         },
         plugins: {
