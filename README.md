@@ -127,6 +127,19 @@ node -v
 
 ##
 
+### dotenv
+
+O projeto utiliza a biblioteca dotenv para carregar variáveis de ambiente a partir de um arquivo .env. Isso é útil para manter configurações sensíveis e específicas do ambiente fora do código-fonte.
+
+#### Instalação
+
+Instale o dotenv usando o npm:
+
+sh
+npm install dotenv
+
+##
+
 ### Thirdweb
 ### Solc (Solidity compiler)
 
