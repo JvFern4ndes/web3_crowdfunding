@@ -283,14 +283,10 @@ Este projeto é licenciado sob a MIT License.
 # Backlog da Documentação
 
 2 - instalação dos pacotes web3 e solc
-<<<<<<< HEAD
 3 - Sobre o thirdweb não ter funcionado e ao invés disso eu ter usado apenas o web3.js
 4 - criação do arquivo compile.js
 5 - criação do arquivo deploy.js
 6 - Sobre a utilização do infura para fazer o deploy
 7 - Utilização do thirdweb para criar a interface (criada com vite)
 8 - instalação do react-router-dom
-=======
-3 - criação do arquivo compile.js
-4 - criação do arquivo deploy.js
->>>>>>> cd3985fd2ea0f3eb0aa056014b8bfeb28f60f4cc
+9 - Sobre a instalação do tailwindcss
