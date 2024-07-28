@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { chainId, ThirdWebProvider } from '@thirdweb-dev/react';
+import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react';
+
+import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-    <ThirdWebProvider desiredChaindId={chainId.Sepolia}>
+    <ThirdwebProvider desiredChaindId={ChainId.Goerli}>
         <Router>
             <App />
         </Router>
-    </ThirdWebProvider>,
+    </ThirdwebProvider>,
 );
