@@ -558,6 +558,14 @@ video {
   position: relative;
 }
 
+.sticky {
+  position: sticky;
+}
+
+.top-5 {
+  top: 1.25rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -565,6 +573,10 @@ video {
 
 .mr-10 {
   margin-right: 2.5rem;
+}
+
+.mt-12 {
+  margin-top: 3rem;
 }
 
 .flex {
@@ -575,8 +587,40 @@ video {
   display: none;
 }
 
+.h-1\/2 {
+  height: 50%;
+}
+
+.h-\[48px\] {
+  height: 48px;
+}
+
+.h-\[52px\] {
+  height: 52px;
+}
+
+.h-\[93vh\] {
+  height: 93vh;
+}
+
 .min-h-screen {
   min-height: 100vh;
+}
+
+.w-1\/2 {
+  width: 50%;
+}
+
+.w-\[48px\] {
+  width: 48px;
+}
+
+.w-\[52px\] {
+  width: 52px;
+}
+
+.w-\[76px\] {
+  width: 76px;
 }
 
 .max-w-\[1280px\] {
@@ -587,8 +631,40 @@ video {
   flex: 1 1 0%;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .flex-row {
   flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-3 {
+  gap: 0.75rem;
+}
+
+.rounded-\[10px\] {
+  border-radius: 10px;
+}
+
+.rounded-\[20px\] {
+  border-radius: 20px;
 }
 
 .bg-\[\#13131a\] {
@@ -596,8 +672,43 @@ video {
   background-color: rgb(19 19 26 / var(--tw-bg-opacity));
 }
 
+.bg-\[\#1c1c24\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(28 28 36 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#2c2f32\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(44 47 50 / var(--tw-bg-opacity));
+}
+
+.bg-\[f00\] {
+  background-color: f00;
+}
+
+.bg-\[\#f00\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 0 0 / var(--tw-bg-opacity));
+}
+
 .p-4 {
   padding: 1rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.shadow-secondary {
+  --tw-shadow: 10px 10px 20px rgba(2, 2, 2, 0.25);
+  --tw-shadow-colored: 10px 10px 20px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.grayscale {
+  --tw-grayscale: grayscale(100%);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 @media not all and (min-width: 640px) {
