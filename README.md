@@ -164,8 +164,31 @@ Para instalar a biblioteca `web3.js`, use o `npm`:
 npm install web3
 ```
 
+##
+
+### Solc
+
+`Solc` é um compilador de `Solidity`, a linguagem de programação usada para escrever contratos inteligentes na blockchain `Ethereum`. Ele traduz o código fonte escrito em Solidity para bytecode executável pela Ethereum Virtual Machine (EVM).
+
+#### Principais Características do Solc
+
+- **Compilação de Contratos Inteligentes**: Transforma código `Solidity` em bytecode e ABI (Application Binary Interface) utilizáveis na blockchain.
+- **Suporte para Diversas Versões de Solidity**: Permite a compilação de contratos com diferentes versões de `Solidity`.
+- **Compatibilidade com Ferramentas de Desenvolvimento Ethereum**: Integra-se bem com outras ferramentas como `web3.js` e frameworks de desenvolvimento como `Truffle` e `Hardhat`.
+
+#### Requisitos
+
+Para usar a biblioteca `solc` no seu projeto, você precisará ter o `Node.js` e o `npm` instalados em sua máquina. Certifique-se de usar uma versão compatível com a biblioteca `solc`.
+
+##### Instalação do Solc
+
+Para instalar a biblioteca `solc`, use o `npm`:
+
+```sh
+npm install solc
+```
+
 ### Thirdweb
-### Solc (Solidity compiler)
 
 ## Sobre o contrato inteligente
 
@@ -305,7 +328,6 @@ Este projeto é licenciado sob a MIT License.
 
 # Backlog da Documentação
 
-2 - instalação dos pacotes web3 e solc
 3 - Sobre o thirdweb não ter funcionado e ao invés disso eu ter usado apenas o web3.js
 4 - criação do arquivo compile.js
 5 - criação do arquivo deploy.js
