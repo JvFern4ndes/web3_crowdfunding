@@ -611,6 +611,14 @@ video {
   height: 100%;
 }
 
+.h-\[60\%\] {
+  height: 60%;
+}
+
+.h-\[40px\] {
+  height: 40px;
+}
+
 .min-h-\[52px\] {
   min-height: 52px;
 }
@@ -645,6 +653,14 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-\[60\%\] {
+  width: 60%;
+}
+
+.w-\[40px\] {
+  width: 40px;
 }
 
 .max-w-\[1280px\] {
@@ -713,6 +729,10 @@ video {
 
 .rounded-\[20px\] {
   border-radius: 20px;
+}
+
+.rounded-full {
+  border-radius: 9999px;
 }
 
 .bg-\[\#13131a\] {
