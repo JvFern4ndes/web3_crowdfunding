@@ -110,7 +110,7 @@ Node.js v20.14.0
 
 #### Instalação do Node.js
 
-**1- Você pode baixar e instalar o Node.js a partir do site oficial.**
+**1 - Você pode baixar e instalar o Node.js a partir do site oficial.**
 
 - Acesse o [site oficial do Node.js](https://nodejs.org/).
 - Baixe o instalador da versão recomendada (LTS).
@@ -212,6 +212,14 @@ Para instalar a biblioteca `thirdweb`, use o `npm`:
 ```sh
 npm install @thirdweb-dev/sdk
 ````
+
+#### Problemas Encontrados com Thirdweb
+
+Embora `Thirdweb` ofereça muitas vantagens, enfrentei dificuldades ao tentar utilizá-lo para o deploy do contrato inteligente. Após várias tentativas de verificações na plataforma do thirdweb, onde não consegui configurar o meu device (estava dando erro, mas não havia explicação de qual era o erro, e o suporte também não deu um retorno, talvez por conta de eu estar utilizando o plano gratuito), optei por usar uma abordagem alternativa para garantir a continuidade do desenvolvimento do projeto.
+
+#### Alternativa: Deploy com Web3.js
+
+Devido às dificuldades encontradas com o `Thirdweb`, decidi usar a biblioteca `web3.js` para fazer o deploy do contrato inteligente. [Aqui você encontrará os detalhes de como eu consegui fazer o deploy do contrato.](#deploy-do-contrato-com-web3js)
 
 ## Sobre o contrato inteligente
 
@@ -324,6 +332,8 @@ Nenhum.
 
 #### Detalhes: 
 A função cria uma lista de todas as campanhas com base no número de campanhas existentes e retorna essa lista.
+
+## Deploy do contrato com web3js
 
 ## Comandos Úteis
 
