@@ -141,6 +141,29 @@ npm install dotenv
 
 ##
 
+### Web3.js
+
+`Web3.js` é uma biblioteca JavaScript que permite a interação com a blockchain `Ethereum`. Ela fornece uma interface para a comunicação com contratos inteligentes, envio de transações, leitura de dados da blockchain e muito mais. Desenvolvida e mantida pela `Ethereum Foundation`, `web3.js` é amplamente utilizada em aplicações descentralizadas (dApps).
+
+#### Principais Características do Web3.js
+
+- **Interação com Contratos Inteligentes**: Permite a leitura e escrita de contratos inteligentes na blockchain Ethereum.
+- **Envio de Transações**: Facilita o envio de transações e a gestão de carteiras Ethereum.
+- **Acesso aos Dados da Blockchain**: Fornece métodos para acessar dados armazenados na blockchain, como saldos de contas, estados de contratos, etc.
+- **Compatibilidade com Vários Provedores**: Suporta diferentes provedores, incluindo `Infura`, `Alchemy`, `Ganache` e conexões locais ao cliente Ethereum.
+
+#### Requisitos
+
+Para usar a biblioteca `web3.js` no seu projeto, você precisará ter o `Node.js` e o `npm` instalados em sua máquina. Certifique-se de usar uma versão compatível com a biblioteca `web3.js`.
+
+#### Instalação do Web3.js
+
+Para instalar a biblioteca `web3.js`, use o `npm`:
+
+```sh
+npm install web3
+```
+
 ### Thirdweb
 ### Solc (Solidity compiler)
 
