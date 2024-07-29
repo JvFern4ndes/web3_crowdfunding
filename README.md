@@ -188,7 +188,30 @@ Para instalar a biblioteca `solc`, use o `npm`:
 npm install solc
 ```
 
+##
+
 ### Thirdweb
+
+`Thirdweb` é uma plataforma que facilita a criação, implantação e interação com contratos inteligentes na blockchain. Ela fornece uma interface simples para desenvolvedores construírem aplicações descentralizadas (dApps) rapidamente, sem a necessidade de conhecimento profundo sobre contratos inteligentes.
+
+#### Principais Características do Thirdweb
+
+- **Implantação Simples de Contratos**: Fornece ferramentas e modelos para implantar contratos inteligentes sem esforço.
+- **Interface Intuitiva**: Interface fácil de usar para gerenciar contratos inteligentes.
+- **Suporte para Várias Blockchains**: Compatível com várias blockchains, incluindo Ethereum, Polygon, e Binance Smart Chain.
+- **SDK e APIs**: SDKs e APIs robustos para interagir com contratos inteligentes a partir de diferentes linguagens de programação e plataformas.
+
+#### Requisitos
+
+Para usar a biblioteca `thirdweb` no seu projeto, você precisará ter o `Node.js` e o `npm` instalados em sua máquina. Certifique-se de usar uma versão compatível com a biblioteca `thirdweb`.
+
+##### Instalação do Thirdweb
+
+Para instalar a biblioteca `thirdweb`, use o `npm`:
+
+```sh
+npm install @thirdweb-dev/sdk
+````
 
 ## Sobre o contrato inteligente
 
