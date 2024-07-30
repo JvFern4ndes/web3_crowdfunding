@@ -13,7 +13,10 @@ const Navbar = () => {
     const address = '0xabc';
 
     return (
-        <div className="flex md:flex-row flex-col-reverse justify-between mb-[35px] gap-6">
+        <div
+            className="flex md:flex-row flex-col-reverse justify-between mb-[35px] gap-6"
+            aria-label="contaier de"
+        >
             <div className="lg:flex-1 flex flex-row max-w-[458px] py-2 pl-4 pr-2 h-[52px] bg-[#1c1c24] rounded-[100px]">
                 <input
                     type="text"
@@ -67,11 +70,11 @@ const Navbar = () => {
                     src={menu}
                     alt="menu"
                     className="w-[34px] h-[34px] object-contain cursor-pointer"
-                    onClick={() => setToggleDrawer(!toggleDrawer)}
+                    onClick={() => setToggleDrawer((prev) => !prev)}
                 />
 
                 <div
-                    className={`absolute top-[60px] right-0 left-0 bg-[#1c1c24] z-10 shadow-secondary py-4 ${!toggleDrawer} ? '-translate-y-[100vh]' : 'translate-y-0]' transition-all duration-700`}
+                    className={`absolute top-[60px] right-0 left-0 bg-[#1c1c24] z-10 shadow-secondary py-4 ${!toggleDrawer ? '-translate-y-[100vh]' : 'translate-y-0]'} transition-all duration-700`}
                 >
                     <ul className="mb-4">
                         {navlinks.map((Link) => (
@@ -97,6 +100,20 @@ const Navbar = () => {
                             </li>
                         ))}
                     </ul>
+
+                    <div className="flex mx-4">
+                        <CustomButton
+                            btnType="button"
+                            title={
+                                address ? 'Create a campaign' : 'Connect wallet'
+                            }
+                            styles={address ? 'bg-[#1dc071]' : 'bg-[#8c6dfd]'}
+                            handleClick={() => {
+                                if (address) navigate('create-campaign');
+                                else 'connect()';
+                            }}
+                        />
+                    </div>
                 </div>
             </div>
         </div>
