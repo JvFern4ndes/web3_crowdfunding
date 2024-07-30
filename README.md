@@ -382,6 +382,10 @@ const contractPath = path.resolve(__dirname, 'CrowdFunding.sol');
 const source = fs.readFileSync(contractPath, 'utf8');
 ````
 
+* `__filename` e `__dirname`: Utilizados para determinar o diretório atual do script.
+* `contractPath`: Caminho absoluto para o arquivo do contrato `CrowdFunding.sol`.
+* `source`: Conteúdo do arquivo do contrato lido como uma string.
+
 #### 3. Configuração das Opções de Compilação
 
 Configuramos as opções de compilação para o `solc`:
@@ -404,6 +408,10 @@ const input = {
 };
 ````
 
+* `input`: Objeto de configuração que especifica a linguagem, as fontes do contrato e as opções de saída.
+* `sources`: Contém o nome do contrato e seu conteúdo.
+* `outputSelection`: Especifica que queremos tanto o ABI quanto o bytecode do contrato compilado.
+
 #### 4. Compilação do Contrato
 
 Compilamos o contrato utilizando `solc`:
@@ -417,6 +425,9 @@ if (output.errors) {
     });
 }
 ````
+
+* `output`: Resultado da compilação do contrato, convertido de JSON para um objeto JavaScript.
+* `output.errors`: Lista de erros encontrados durante a compilação, se houver. Os erros são exibidos no console.
 
 #### 5. Extração do ABI e do Bytecode
 
@@ -434,6 +445,11 @@ const abi = contract.abi;
 const bytecode = contract.evm.bytecode.object;
 ````
 
+* `contractName`: Nome do contrato que estamos compilando.
+* `contract`: Objeto contendo os detalhes do contrato compilado.
+* `abi`: Interface binária da aplicação do contrato.
+* `bytecode`: Código de byte do contrato, pronto para ser implantado na blockchain.
+
 #### 6. Exportação do ABI e do Bytecode
 
 Exportamos o ABI e o bytecode para uso posterior:
@@ -441,6 +457,8 @@ Exportamos o ABI e o bytecode para uso posterior:
 ```sh
 export { abi, bytecode };
 ````
+
+* Esta linha torna o ABI e o bytecode disponíveis para serem importados por outros scripts.
 
 #### 7. Escrita do ABI e do Bytecode em Arquivos JSON
 
@@ -452,6 +470,9 @@ fs.writeFileSync('SimpleStorageBytecode.json', bytecode);
 
 console.log('Compilação concluída com sucesso');
 ````
+
+* `fs.writeFileSync`: Função que escreve dados em arquivos. Neste caso, estamos salvando o ABI e o bytecode em arquivos JSON.
+* `JSON.stringify`: Converte o ABI para uma string JSON formatada.
 
 #### Resumindo
 
