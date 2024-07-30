@@ -344,13 +344,13 @@ O arquivo `compile.js` é responsável por compilar o contrato inteligente `Crow
 
 O arquivo `compile.js` está estruturado da seguinte forma:
 
-1 - Importação dos módulos necessários.
-2 - Definição do caminho e leitura do código fonte do contrato.
-3 - Configuração das opções de compilação.
-4 - Compilação do contrato utilizando o compilador Solidity (`solc`).
-5 - Extração do ABI e do bytecode do resultado da compilação.
-6 - Exportação do ABI e do bytecode para uso posterior.
-7 - Escrita do ABI e do bytecode em arquivos JSON.
+1 - Importação dos módulos necessários.<br>
+2 - Definição do caminho e leitura do código fonte do contrato.<br>
+3 - Configuração das opções de compilação.<br>
+4 - Compilação do contrato utilizando o compilador Solidity (`solc`).<br>
+5 - Extração do ABI e do bytecode do resultado da compilação.<br>
+6 - Exportação do ABI e do bytecode para uso posterior.<br>
+7 - Escrita do ABI e do bytecode em arquivos JSON.<br>
 
 #### Passo a Passo do Desenvolvimento
 
