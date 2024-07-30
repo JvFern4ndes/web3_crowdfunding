@@ -45,7 +45,7 @@ const bytecode = contract.evm.bytecode.object;
 
 export { abi, bytecode };
 
-fs.writeFileSync('SimpleStorageABI.json', JSON.stringify(abi, null, 2));
-fs.writeFileSync('SimpleStorageBytecode.json', bytecode);
+fs.writeFileSync('CrowdFundingABI.json', JSON.stringify(abi, null, 2));
+fs.writeFileSync('CrowdFundingBytecode.json', bytecode);
 
 console.log('Compilação concluída com sucesso');
