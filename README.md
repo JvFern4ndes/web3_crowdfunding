@@ -110,7 +110,7 @@ Node.js v20.14.0
 
 #### Instalação do Node.js
 
-**1- Você pode baixar e instalar o Node.js a partir do site oficial.**
+**1 - Você pode baixar e instalar o Node.js a partir do site oficial.**
 
 - Acesse o [site oficial do Node.js](https://nodejs.org/).
 - Baixe o instalador da versão recomendada (LTS).
@@ -141,8 +141,85 @@ npm install dotenv
 
 ##
 
+### Web3.js
+
+`Web3.js` é uma biblioteca JavaScript que permite a interação com a blockchain `Ethereum`. Ela fornece uma interface para a comunicação com contratos inteligentes, envio de transações, leitura de dados da blockchain e muito mais. Desenvolvida e mantida pela `Ethereum Foundation`, `web3.js` é amplamente utilizada em aplicações descentralizadas (dApps).
+
+#### Principais Características do Web3.js
+
+- **Interação com Contratos Inteligentes**: Permite a leitura e escrita de contratos inteligentes na blockchain Ethereum.
+- **Envio de Transações**: Facilita o envio de transações e a gestão de carteiras Ethereum.
+- **Acesso aos Dados da Blockchain**: Fornece métodos para acessar dados armazenados na blockchain, como saldos de contas, estados de contratos, etc.
+- **Compatibilidade com Vários Provedores**: Suporta diferentes provedores, incluindo `Infura`, `Alchemy`, `Ganache` e conexões locais ao cliente Ethereum.
+
+#### Requisitos
+
+Para usar a biblioteca `web3.js` no seu projeto, você precisará ter o `Node.js` e o `npm` instalados em sua máquina. Certifique-se de usar uma versão compatível com a biblioteca `web3.js`.
+
+#### Instalação do Web3.js
+
+Para instalar a biblioteca `web3.js`, use o `npm`:
+
+```sh
+npm install web3
+```
+
+##
+
+### Solc
+
+`Solc` é um compilador de `Solidity`, a linguagem de programação usada para escrever contratos inteligentes na blockchain `Ethereum`. Ele traduz o código fonte escrito em Solidity para bytecode executável pela Ethereum Virtual Machine (EVM).
+
+#### Principais Características do Solc
+
+- **Compilação de Contratos Inteligentes**: Transforma código `Solidity` em bytecode e ABI (Application Binary Interface) utilizáveis na blockchain.
+- **Suporte para Diversas Versões de Solidity**: Permite a compilação de contratos com diferentes versões de `Solidity`.
+- **Compatibilidade com Ferramentas de Desenvolvimento Ethereum**: Integra-se bem com outras ferramentas como `web3.js` e frameworks de desenvolvimento como `Truffle` e `Hardhat`.
+
+#### Requisitos
+
+Para usar a biblioteca `solc` no seu projeto, você precisará ter o `Node.js` e o `npm` instalados em sua máquina. Certifique-se de usar uma versão compatível com a biblioteca `solc`.
+
+##### Instalação do Solc
+
+Para instalar a biblioteca `solc`, use o `npm`:
+
+```sh
+npm install solc
+```
+
+##
+
 ### Thirdweb
-### Solc (Solidity compiler)
+
+`Thirdweb` é uma plataforma que facilita a criação, implantação e interação com contratos inteligentes na blockchain. Ela fornece uma interface simples para desenvolvedores construírem aplicações descentralizadas (dApps) rapidamente, sem a necessidade de conhecimento profundo sobre contratos inteligentes.
+
+#### Principais Características do Thirdweb
+
+- **Implantação Simples de Contratos**: Fornece ferramentas e modelos para implantar contratos inteligentes sem esforço.
+- **Interface Intuitiva**: Interface fácil de usar para gerenciar contratos inteligentes.
+- **Suporte para Várias Blockchains**: Compatível com várias blockchains, incluindo Ethereum, Polygon, e Binance Smart Chain.
+- **SDK e APIs**: SDKs e APIs robustos para interagir com contratos inteligentes a partir de diferentes linguagens de programação e plataformas.
+
+#### Requisitos
+
+Para usar a biblioteca `thirdweb` no seu projeto, você precisará ter o `Node.js` e o `npm` instalados em sua máquina. Certifique-se de usar uma versão compatível com a biblioteca `thirdweb`.
+
+##### Instalação do Thirdweb
+
+Para instalar a biblioteca `thirdweb`, use o `npm`:
+
+```sh
+npm install @thirdweb-dev/sdk
+````
+
+#### Problemas Encontrados com Thirdweb
+
+Embora `Thirdweb` ofereça muitas vantagens, enfrentei dificuldades ao tentar utilizá-lo para o deploy do contrato inteligente. Após várias tentativas de verificações na plataforma do thirdweb, onde não consegui configurar o meu device (estava dando erro, mas não havia explicação de qual era o erro, e o suporte também não deu um retorno, talvez por conta de eu estar utilizando o plano gratuito), optei por usar uma abordagem alternativa para garantir a continuidade do desenvolvimento do projeto.
+
+#### Alternativa: Deploy com Web3.js
+
+Devido às dificuldades encontradas com o `Thirdweb`, decidi usar a biblioteca `web3.js` para fazer o deploy do contrato inteligente. [Aqui você encontrará os detalhes de como eu consegui fazer o deploy do contrato.](#deploy-do-contrato-com-web3js)
 
 ## Sobre o contrato inteligente
 
@@ -256,6 +333,8 @@ Nenhum.
 #### Detalhes: 
 A função cria uma lista de todas as campanhas com base no número de campanhas existentes e retorna essa lista.
 
+## Deploy do contrato com web3js
+
 ## Comandos Úteis
 
 ```sh
@@ -282,7 +361,6 @@ Este projeto é licenciado sob a MIT License.
 
 # Backlog da Documentação
 
-2 - instalação dos pacotes web3 e solc
 3 - Sobre o thirdweb não ter funcionado e ao invés disso eu ter usado apenas o web3.js
 4 - criação do arquivo compile.js
 5 - criação do arquivo deploy.js
