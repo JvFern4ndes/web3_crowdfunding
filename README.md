@@ -511,3 +511,5 @@ Este projeto é licenciado sob a MIT License.
 7 - Utilização do thirdweb para criar a interface (criada com vite)
 8 - instalação do react-router-dom
 9 - Sobre a instalação do tailwindcss
+10 - instalação da biblioteca ethers.js
+
