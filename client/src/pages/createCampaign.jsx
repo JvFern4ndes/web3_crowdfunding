@@ -7,6 +7,16 @@ import { CustomButton } from '../components';
 import { checkIfImage } from '../utils';
 
 const createCampaign = () => {
+    const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
+    const [form, setForm] = useState({
+        name: '',
+        title: '',
+        description: '',
+        target: '',
+        deadline: '',
+        image: '',
+    });
     return <div>createCampaign</div>;
 };
 
