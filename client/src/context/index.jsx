@@ -1,43 +1,60 @@
-import React, { useContext, createContext } from 'react';
-
-import {
-    useAddress,
-    useContract,
-    useMetamask,
-    useContractWrite,
-} from '@thirdweb-dev/react';
-
+import React, { useContext, createContext, useEffect, useState } from 'react';
+import Web3 from 'web3';
 import { ethers } from 'ethers';
+
+import CrowdFundingABI from '../../../web3/contracts/CrowdFundingABI.js';
 
 const StateContext = createContext();
 
 export const StateContextProvider = ({ children }) => {
-    const { contract } = useContract(
-        '0xb740FbB17BFAB0648414971bEF135fcA3F15fe23',
-    );
+    const [web3, setWeb3] = useState(null);
+    const [contract, setContract] = useState(null);
+    const [address, setAddress] = useState(null);
 
-    const { mutateAsync: createCampaign } = useContractWrite(
-        contract,
-        'createCampaign',
-    );
+    useEffect(() => {
+        const initWeb3 = async () => {
+            if (window.ethereum) {
+                const web3Instance = new Web3(window.ethereum);
+                setWeb3(web3Instance);
 
-    const address = useAddress();
-    const connect = useMetamask();
+                // Solicitar acesso à conta
+                const accounts = await web3Instance.eth.requestAccounts();
+                setAddress(accounts[0]);
+
+                // Criar uma instância do contrato
+                const contractAddress =
+                    '0x55fb15f589e581329650af0b6bf2c9ded71f5352';
+                const contractInstance = new web3Instance.eth.Contract(
+                    CrowdFundingABI,
+                    contractAddress,
+                );
+                setContract(contractInstance);
+            } else {
+                console.error(
+                    'Por favor, instale uma carteira Ethereum como MetaMask.',
+                );
+            }
+        };
+
+        initWeb3();
+    }, []);
 
     const publishCampaign = async (form) => {
         try {
-            const data = await createCampaign([
-                address,
-                form.title,
-                form.description,
-                form.target,
-                new Date(form.deadline).getTime(),
-                form.image,
-            ]);
+            const data = await contract.methods
+                .createCampaign(
+                    address,
+                    form.title,
+                    form.description,
+                    form.target,
+                    new Date(form.deadline).getTime(),
+                    form.image,
+                )
+                .send({ from: address });
 
             console.log('contract call success', data);
         } catch (error) {
-            console.log('contract call failure');
+            console.log('contract call failure', error);
         }
     };
 

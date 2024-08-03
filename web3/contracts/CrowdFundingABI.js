@@ -1,4 +1,6 @@
-[
+// src/abis/CrowdFundingABI.js
+
+const CrowdFundingABI = [
   {
     "inputs": [
       {
@@ -202,4 +204,6 @@
     "stateMutability": "view",
     "type": "function"
   }
-]
+];
+
+export default CrowdFundingABI;
