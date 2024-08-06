@@ -2,6 +2,8 @@ import React, { useContext, createContext, useEffect, useState } from 'react';
 import Web3 from 'web3';
 import CrowdFundingABI from '../../../web3/contracts/CrowdFundingABI.js';
 
+import connectWallet from '../utils/index.js'; // Importe a função connectWallet
+
 const StateContext = createContext();
 
 export const StateContextProvider = ({ children }) => {
@@ -74,6 +76,7 @@ export const StateContextProvider = ({ children }) => {
                 web3,
                 address,
                 contract,
+                connect: connectWallet(),
                 createCampaign: publishCampaign,
             }}
         >
