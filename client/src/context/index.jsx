@@ -1,7 +1,5 @@
 import React, { useContext, createContext, useEffect, useState } from 'react';
 import Web3 from 'web3';
-import { ethers } from 'ethers';
-
 import CrowdFundingABI from '../../../web3/contracts/CrowdFundingABI.js';
 
 const StateContext = createContext();
@@ -41,13 +39,25 @@ export const StateContextProvider = ({ children }) => {
 
     const publishCampaign = async (form) => {
         try {
+            const deadlineTimestamp = new Date(form.deadline).getTime();
+            if (isNaN(deadlineTimestamp)) {
+                console.error('A data de prazo fornecida é inválida.');
+                return;
+            }
+
+            const targetValue = parseInt(form.target);
+            if (isNaN(targetValue)) {
+                console.error('O valor do alvo fornecido é inválido.');
+                return;
+            }
+
             const data = await contract.methods
                 .createCampaign(
                     address,
                     form.title,
                     form.description,
-                    form.target,
-                    new Date(form.deadline).getTime(),
+                    targetValue,
+                    deadlineTimestamp,
                     form.image,
                 )
                 .send({ from: address });
@@ -61,6 +71,7 @@ export const StateContextProvider = ({ children }) => {
     return (
         <StateContext.Provider
             value={{
+                web3,
                 address,
                 contract,
                 createCampaign: publishCampaign,
