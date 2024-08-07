@@ -628,6 +628,10 @@ video {
   margin-top: 3rem;
 }
 
+.mt-\[15px\] {
+  margin-top: 15px;
+}
+
 .mt-\[20px\] {
   margin-top: 20px;
 }
@@ -636,24 +640,20 @@ video {
   margin-top: 2px;
 }
 
-.mt-\[40px\] {
-  margin-top: 40px;
+.mt-\[3px\] {
+  margin-top: 3px;
 }
 
-.mt-\[65px\] {
-  margin-top: 65px;
+.mt-\[40px\] {
+  margin-top: 40px;
 }
 
 .mt-\[5px\] {
   margin-top: 5px;
 }
 
-.mt-\[15px\] {
-  margin-top: 15px;
-}
-
-.mt-\[3px\] {
-  margin-top: 3px;
+.mt-\[65px\] {
+  margin-top: 65px;
 }
 
 .block {
@@ -692,6 +692,10 @@ video {
   height: 24px;
 }
 
+.h-\[30px\] {
+  height: 30px;
+}
+
 .h-\[34px\] {
   height: 34px;
 }
@@ -720,10 +724,6 @@ video {
   height: 100%;
 }
 
-.h-\[30px\] {
-  height: 30px;
-}
-
 .min-h-\[52px\] {
   min-height: 52px;
 }
@@ -746,6 +746,10 @@ video {
 
 .w-\[24px\] {
   width: 24px;
+}
+
+.w-\[30px\] {
+  width: 30px;
 }
 
 .w-\[34px\] {
@@ -778,10 +782,6 @@ video {
 
 .w-full {
   width: 100%;
-}
-
-.w-\[30px\] {
-  width: 30px;
 }
 
 .max-w-\[1280px\] {
@@ -846,6 +846,10 @@ video {
   justify-content: space-between;
 }
 
+.gap-2 {
+  gap: 0.5rem;
+}
+
 .gap-3 {
   gap: 0.75rem;
 }
@@ -858,6 +862,10 @@ video {
   gap: 1.5rem;
 }
 
+.gap-\[12px\] {
+  gap: 12px;
+}
+
 .gap-\[26px\] {
   gap: 26px;
 }
@@ -868,14 +876,6 @@ video {
 
 .gap-\[40px\] {
   gap: 40px;
-}
-
-.gap-2 {
-  gap: 0.5rem;
-}
-
-.gap-\[12px\] {
-  gap: 12px;
 }
 
 .truncate {
@@ -1047,6 +1047,10 @@ video {
   font-weight: 600;
 }
 
+.leading-\[18px\] {
+  line-height: 18px;
+}
+
 .leading-\[22px\] {
   line-height: 22px;
 }
@@ -1061,10 +1065,6 @@ video {
 
 .leading-\[38px\] {
   line-height: 38px;
-}
-
-.leading-\[18px\] {
-  line-height: 18px;
 }
 
 .text-\[\#1dc071\] {
@@ -1082,14 +1082,14 @@ video {
   color: rgb(129 129 131 / var(--tw-text-opacity));
 }
 
-.text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
 .text-\[\#b2b3bd\] {
   --tw-text-opacity: 1;
   color: rgb(178 179 189 / var(--tw-text-opacity));
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .shadow-secondary {
@@ -1110,6 +1110,10 @@ video {
 
 .grayscale-0 {
   --tw-grayscale: grayscale(0);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 

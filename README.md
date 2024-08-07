@@ -512,4 +512,4 @@ Este projeto é licenciado sob a MIT License.
 8 - instalação do react-router-dom
 9 - Sobre a instalação do tailwindcss
 10 - instalação da biblioteca ethers.js
-
+11 - A importância do toLowerCase na hora de comparar endereços.

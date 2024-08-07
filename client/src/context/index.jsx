@@ -97,6 +97,17 @@ export const StateContextProvider = ({ children }) => {
         }
     };
 
+    const getUserCampaigns = async () => {
+        const allCampaigns = await contract.methods.getCampaigns().call();
+
+        const filteredCampaigns = allCampaigns.filter(
+            (campaign) =>
+                campaign.owner.toLowerCase() === address.toLowerCase(),
+        );
+
+        return filteredCampaigns;
+    };
+
     return (
         <StateContext.Provider
             value={{
@@ -106,6 +117,7 @@ export const StateContextProvider = ({ children }) => {
                 connect: connectWallet(),
                 createCampaign: publishCampaign,
                 getCampaigns,
+                getUserCampaigns,
             }}
         >
             {children}
