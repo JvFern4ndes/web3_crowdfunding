@@ -1,6 +1,7 @@
 import React, { useContext, createContext, useEffect, useState } from 'react';
 import Web3 from 'web3';
 import CrowdFundingABI from '../../../web3/contracts/CrowdFundingABI.js';
+import { ethers } from 'ethers';
 
 import connectWallet from '../utils/index.js'; // Importe a função connectWallet
 
@@ -70,6 +71,32 @@ export const StateContextProvider = ({ children }) => {
         }
     };
 
+    const getCampaigns = async () => {
+        try {
+            const campaigns = await contract.methods.getCampaigns().call();
+            console.log('Campaigns data:', campaigns); // Inspecione os dados retornados
+
+            // Supondo que campaigns seja um array de objetos ou similar
+            const parsedCampaigns = campaigns.map((campaign, i) => ({
+                owner: campaign.owner,
+                title: campaign.title,
+                description: campaign.description,
+                target: ethers.utils.formatEther(campaign.target.toString()),
+                deadline: campaign.deadline,
+                amountCollected: ethers.utils.formatEther(
+                    campaign.amountCollected.toString(),
+                ),
+                image: campaign.image,
+                pId: i,
+            }));
+
+            return parsedCampaigns;
+        } catch (error) {
+            console.error('Error fetching campaigns:', error);
+            return [];
+        }
+    };
+
     return (
         <StateContext.Provider
             value={{
@@ -78,6 +105,7 @@ export const StateContextProvider = ({ children }) => {
                 contract,
                 connect: connectWallet(),
                 createCampaign: publishCampaign,
+                getCampaigns,
             }}
         >
             {children}
