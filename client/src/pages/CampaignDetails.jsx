@@ -9,7 +9,7 @@ import { thirdweb } from '../assets';
 
 const CampaignDetails = () => {
     const { state } = useLocation();
-    const { getDonations, contract, address } = useStateContext();
+    const { getDonations, contract, address, donate } = useStateContext();
 
     const [isLoading, setIsLoading] = useState(false);
     const [amount, setAmount] = useState('');
@@ -17,7 +17,34 @@ const CampaignDetails = () => {
 
     const remainingDays = daysLeft(Number(state.deadline));
 
-    const handleDonate = async () => {};
+    const fetchDonators = async () => {
+        const data = await getDonations(state.pId);
+
+        setDonators(data);
+    };
+
+    useEffect(() => {
+        if (contract && state.pId) fetchDonators();
+    }, [contract, address]);
+
+    const handleDonate = async () => {
+        setIsLoading(true);
+
+        try {
+            // Convert amount to string in case it's not already
+            const amountString = amount.toString();
+
+            // Chama a função donate com pId e amount
+            await donate(state.pId, amountString);
+        } catch (error) {
+            console.error('Donation failed:', error.message);
+            alert(
+                'Donation failed. Please check the console for more details.',
+            );
+        }
+
+        setIsLoading(false);
+    };
 
     return (
         <div>
@@ -34,7 +61,7 @@ const CampaignDetails = () => {
                         <div
                             className="absolute h-full bg[#4acd8d]"
                             style={{
-                                width: `${calculateBarPercentage(state.target, state.amountCollected)}%`,
+                                width: `${calculateBarPercentage(Number(state.target, state.amountCollected))}%`,
                                 maxWidth: '100%',
                             }}
                         ></div>
@@ -95,7 +122,7 @@ const CampaignDetails = () => {
                         </h4>
 
                         <div className="mt-[20px] flex flex-col gap-4">
-                            {donators.lenght > 0 ? (
+                            {donators.length > 0 ? (
                                 donators.map((item, index) => (
                                     <div>DONATOR</div>
                                 ))
