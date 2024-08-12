@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { ethers } from 'ethers';
 
 import { useStateContext } from '../context';
@@ -9,6 +9,7 @@ import { thirdweb } from '../assets';
 
 const CampaignDetails = () => {
     const { state } = useLocation();
+    const navigate = useNavigate();
     const { getDonations, contract, address, donate } = useStateContext();
 
     const [isLoading, setIsLoading] = useState(false);
@@ -37,10 +38,8 @@ const CampaignDetails = () => {
         setIsLoading(true);
 
         try {
-            // Convert amount to string in case it's not already
             const amountString = amount.toString();
 
-            // Chama a função donate com pId e amount
             await donate(state.pId, amountString);
         } catch (error) {
             console.error('Donation failed:', error.message);
@@ -49,6 +48,7 @@ const CampaignDetails = () => {
             );
         }
 
+        navigate('/');
         setIsLoading(false);
     };
 
