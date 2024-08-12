@@ -20,13 +20,17 @@ const CampaignDetails = () => {
     const fetchDonators = async () => {
         const data = await getDonations(state.pId);
 
-        console.log(data);
+        console.log('Donators for campaign:', state.pId, data);
 
         setDonators(data);
     };
 
     useEffect(() => {
-        if (contract && state.pId) fetchDonators();
+        if (!contract) {
+            console.warn('Contract is not available yet.');
+        } else {
+            fetchDonators();
+        }
     }, [contract, address]);
 
     const handleDonate = async () => {
