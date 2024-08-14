@@ -625,7 +625,6 @@ Este projeto é licenciado sob a MIT License.
 
 # Backlog da Documentação
 
-5 - criação do arquivo deploy.js <br />
 6 - Sobre a utilização do infura para fazer o deploy <br />
 7 - Utilização do thirdweb para criar a interface (criada com vite) <br />
 8 - instalação do react-router-dom <br />
