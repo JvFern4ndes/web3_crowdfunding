@@ -480,17 +480,18 @@ O arquivo compile.js permite a compilação eficiente do contrato CrowdFunding.s
 
 ### Segundo passo: Criação do arquivo `deploy.js`
 
-O arquivo `deploy.js` é responsável por implantar o contrato inteligente `CrowdFunding.sol` na rede de teste Sepolia. O processo de desenvolvimento envolve a configuração da conexão com a blockchain usando a biblioteca `web3.js`, a preparação do contrato para implantação, e a execução da transação de implantação. Esta documentação descreve cada etapa do desenvolvimento do arquivo `deploy.js`.
+O arquivo `deploy.js` é usado para implantar o contrato inteligente `CrowdFunding.sol` na rede de teste Sepolia. Ele utiliza a biblioteca `web3.js` para interagir com a rede Ethereum e o provedor Infura para conectar-se à blockchain. O arquivo também faz uso de variáveis de ambiente para proteger informações sensíveis, como a chave privada e o endereço da conta.
 
 #### Estrutura do Arquivo
 
-O arquivo `deploy.js` está estruturado da seguinte forma:
+O arquivo `deploy.js` está estruturado nos seguintes passos:
 
-1. Importação dos módulos necessários.<br />
-2. Configuração do provedor de rede.<br />
-3. Criação de uma instância do contrato.<br />
-4. Implantação do contrato na rede de teste.<br />
-5. Captura do endereço do contrato implantado.<br />
+1. Importação dos módulos necessários.
+2. Carregamento das variáveis de ambiente.
+3. Configuração do provedor de rede e das informações da conta.
+4. Estimativa de gás e preparação da transação de implantação.
+5. Assinatura e envio da transação.
+6. Exibição do endereço do contrato implantado.
 
 #### Passo a Passo do Desenvolvimento
 
@@ -504,67 +505,99 @@ import { abi, bytecode } from './compile.js';
 import dotenv from 'dotenv';
 ````
 
-* `Web3`: Biblioteca que permite a interação com a blockchain Ethereum.
-* `{ abi, bytecode }`: ABI e bytecode gerados no processo de compilação.
-* `dotenv`: Biblioteca para carregar variáveis de ambiente a partir de um arquivo `.env`.
+* `Web3`: Biblioteca para interação com a blockchain Ethereum.
+* `{ abi, bytecode }`: ABI e bytecode do contrato inteligente, gerados no arquivo `compile.js`.
+* `dotenv`: Biblioteca para gerenciar variáveis de ambiente.
 
-#### 2. Configuração do Provedor de Rede
+#### 2. Carregamento das Variáveis de Ambiente
 
-Configuramos a conexão com a rede Ethereum, utilizando a URL do provedor Infura, que é carregada a partir das variáveis de ambiente:
+As variáveis de ambiente são carregadas e verificadas para garantir que todas as informações necessárias estejam disponíveis:
 
 ```sh
 dotenv.config();
 
-const web3 = new Web3(`https://sepolia.infura.io/v3/${process.env.INFURA_PROJECT_ID}`);
+if (!process.env.INFURA_PROJECT_ID || !process.env.ACCOUNT_ADDRESS || !process.env.PRIVATE_KEY) {
+    console.error('Variáveis de ambiente não definidas corretamente');
+    process.exit(1);
+}
 ````
 
 * `dotenv.config()`: Carrega as variáveis de ambiente do arquivo `.env`.
-* `web3`: Instância da biblioteca `Web3` configurada para se conectar à rede Sepolia através do provedor Infura.
+* Verificação para garantir que `INFURA_PROJECT_ID`, `ACCOUNT_ADDRESS`, e `PRIVATE_KEY` estejam definidas.
 
-#### 3. Criação de uma Instância do Contrato
+#### 3. Configuração do Provedor de Rede e Informações da Conta
 
-Criamos uma instância do contrato utilizando o ABI
+Configuramos o provedor de rede usando a URL da Infura e as credenciais da conta:
 
 ```sh
-const contract = new web3.eth.Contract(abi);
+const web3 = new Web3(new Web3.providers.HttpProvider(`https://sepolia.infura.io/v3/${process.env.INFURA_PROJECT_ID}`));
+
+const account = process.env.ACCOUNT_ADDRESS;
+const privateKey = process.env.PRIVATE_KEY;
 ````
 
-* `contract`: Instância do contrato inteligente que será implantado, criada utilizando o ABI.
+* `Web3.providers.HttpProvider`: Configura o provedor HTTP para conexão com a rede Sepolia através do Infura.
+* `account` e `privateKey`: Armazenam o endereço da conta e a chave privada, respectivamente.
 
-#### 4. Implantação do Contrato na Rede de Teste
+#### 4. Estimativa de Gás e Preparação da Transação de Implantação
 
-Preparamos e executamos a transação de implantação, especificando o bytecode do contrato e a conta que será usada para implantar:
+A transação de implantação é preparada com a estimativa de gás necessária:
 
 ```sh
 const deploy = async () => {
-    const accounts = await web3.eth.getAccounts();
-    console.log('Tentando implantar a partir da conta:', accounts[0]);
+    const contract = new web3.eth.Contract(abi);
+    const deployOptions = {
+        data: '0x' + bytecode,
+        arguments: [],
+    };
 
-    const result = await contract.deploy({ data: bytecode }).send({ from: accounts[0], gas: '3000000' });
+    const gasEstimate = await contract.deploy(deployOptions).estimateGas();
 
-    console.log('Contrato implantado em:', result.options.address);
+    const gasPrice = await web3.eth.getGasPrice();
+````
+
+* `contract.deploy({ data: bytecode })`: Prepara a transação de implantação com o bytecode do contrato.
+* `estimateGas()`: Estima a quantidade de gás necessária para a implantação.
+* `getGasPrice()`: Obtém o preço atual do gás na rede.
+
+#### 5. Assinatura e Envio da Transação
+
+A transação é assinada com a chave privada e enviada à rede:
+
+```sh
+    const tx = {
+        from: account,
+        gas: gasEstimate,
+        gasPrice: gasPrice,
+        data: contract.deploy(deployOptions).encodeABI(),
+    };
+
+    const signedTx = await web3.eth.accounts.signTransaction(tx, privateKey);
+
+    const receipt = await web3.eth.sendSignedTransaction(signedTx.rawTransaction);
+    console.log('Contract deployed at address:', receipt.contractAddress);
 };
+````
+
+* `signTransaction(tx, privateKey)`: Assina a transação com a chave privada.
+* `sendSignedTransaction(signedTx.rawTransaction)`: Envia a transação assinada para a rede.
+
+#### 6. Exibição do Endereço do Contrato Implantado
+
+Após a implantação bem-sucedida, o endereço do contrato é exibido no console:
+
+```sh
+    console.log('Contract deployed at address:', receipt.contractAddress);
+};
+
 deploy();
 ````
 
-* `deploy()`: Função assíncrona que realiza a implantação do contrato.
-* `web3.eth.getAccounts()`: Recupera a lista de contas disponíveis no provedor.
-* `contract.deploy({ data: bytecode })`: Prepara a transação de implantação com o bytecode do contrato.
-* `send({ from: accounts[0], gas: '3000000' })`: Executa a transação utilizando a primeira conta disponível e especifica o limite de gás.”
-
-#### 5. Captura do Endereço do Contrato Implantado
-
-Após a implantação, o endereço do contrato implantado é capturado e exibido no console:
-
-```sh
-console.log('Contrato implantado em:', result.options.address);
-````
-
-* `result.options.address`: Contém o endereço na blockchain onde o contrato foi implantado.
+* `receipt.contractAddress`: Exibe o endereço onde o contrato foi implantado.
 
 #### Resumindo
 
-“O arquivo `deploy.js` automatiza o processo de implantação do contrato `CrowdFunding.sol` na rede de teste Sepolia. Cada etapa do processo, desde a configuração da conexão com a blockchain até a execução da transação de implantação, é documentada para fornecer uma referência clara e útil para futuros desenvolvimentos e manutenções no projeto.”
+O arquivo `deploy.js` automatiza a implantação do contrato `CrowdFunding.sol` na rede de teste Sepolia, garantindo que todos os passos, desde a configuração do provedor até o envio da transação, sejam realizados de forma segura e eficiente.
 
 ## Comandos Úteis
 
