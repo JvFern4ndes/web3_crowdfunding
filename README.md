@@ -222,6 +222,112 @@ Embora `Thirdweb` ofereça muitas vantagens, enfrentei dificuldades ao tentar ut
 
 Devido às dificuldades encontradas com o `Thirdweb`, decidi usar a biblioteca `web3.js` para fazer o deploy do contrato inteligente. [Aqui você encontrará os detalhes de como eu consegui fazer o deploy do contrato.](#deploy-do-contrato-com-web3js)
 
+### ESLint e Prettier
+
+Este projeto utiliza o [ESLint](https://eslint.org/) para garantir a qualidade do código e o [Prettier](https://prettier.io/) para formatação automática. Abaixo estão os passos para configurar e utilizar essas ferramentas no projeto.
+
+#### 1. Instalação das Dependências
+
+Instale o ESLint e os plugins necessários:
+
+```sh
+yarn add eslint eslint-plugin-react eslint-plugin-prettier eslint-config-prettier prettier --dev
+````
+
+#### 2. Configuração do ESLint
+
+Crie ou edite o arquivo de configuração do ESLint (`.eslintrc.js`) na raiz do projeto:
+
+```sh
+import globals from "globals";
+import pluginJs from "@eslint/js";
+import pluginReact from "eslint-plugin-react";
+import pluginPrettier from "eslint-plugin-prettier";
+
+export default [
+  {
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+      },
+      parserOptions: {
+        ecmaVersion: 12,
+        sourceType: "module",
+      },
+    },
+    plugins: {
+      js: pluginJs,
+      react: pluginReact,
+      prettier: pluginPrettier,
+    },
+    rules: {
+      "react/react-in-jsx-scope": "off",
+      "react/prop-types": "off",
+      "prettier/prettier": "error",
+      "semi": ["error", "always"],
+      "quotes": ["error", "single"],
+      "indent": ["error", 2],
+    },
+    settings: {
+      react: {
+        version: "detect",
+      },
+    },
+  },
+];
+````
+
+#### 3. Configuração do EditorConfig
+
+Adicione um arquivo `.editorconfig` na raiz do projeto para garantir consistência na formatação entre diferentes editores:
+
+```sh
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.{js,jsx,ts,tsx}]
+indent_style = space
+indent_size = 2
+````
+
+#### 4. Configuração do Visual Studio Code
+
+Para garantir que o ESLint e o Prettier funcionem corretamente ao salvar arquivos, adicione as seguintes configurações no arquivo `settings.json` do VS Code:
+
+```sh
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "prettier.requireConfig": true
+}
+````
+
+#### 5. Executando o ESLint
+
+Para verificar o código e aplicar correções automáticas, execute o ESLint com a opção `--fix`:
+
+````sh
+yarn lint --fix
+````
+
 ## Sobre o contrato inteligente
 
 ### Estrutura `Campaign`
