@@ -328,6 +328,128 @@ Para verificar o código e aplicar correções automáticas, execute o ESLint co
 yarn lint --fix
 ````
 
+### Tailwind CSS
+
+O Tailwind CSS é um framework de CSS utilitário que permite criar interfaces de usuário (UI) de forma rápida e eficiente. Ao contrário de outros frameworks de CSS, como Bootstrap, que oferecem componentes prontos e pré-estilizados, o Tailwind CSS fornece uma coleção de classes utilitárias de baixo nível que você pode combinar para criar layouts e designs personalizados.
+
+#### 1. Instalação do Tailwind CSS
+
+Execute o seguinte comando para instalar o Tailwind CSS no seu projeto:
+
+````sh
+npm install tailwindcss
+````
+
+Após a instalação, você pode gerar um arquivo de configuração padrão do Tailwind CSS usando o seguinte comando:
+
+````
+npx tailwindcss init
+````
+
+#### 2. Configuração do Tailwind CSS
+
+Edite o arquivo `tailwind.config.js` para definir os caminhos dos arquivos onde o Tailwind deve procurar por classes CSS:
+
+````
+module.exports = {
+  content: [
+    './src/**/*.{js,jsx,ts,tsx}', // Ajuste conforme sua estrutura de diretórios
+    './public/index.html',
+  ],
+  theme: {
+    extend: {
+      // Adicione personalizações aqui
+    },
+  },
+  plugins: [],
+};
+````
+
+#### 3. Adicionando o Tailwind CSS ao Projeto
+
+Na pasta `src` do seu projeto, crie um arquivo CSS (ex: `tailwind.css`) e adicione as diretivas do Tailwind:
+
+````
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+````
+
+No arquivo de entrada principal do seu projeto (ex: src/index.js ou src/App.js), importe o arquivo CSS criado:
+
+````
+import './tailwind.css';
+````
+
+#### 4. Configurando o Processador CSS
+
+Se você estiver usando um framework como Next.js, o Tailwind CSS será processado automaticamente. Para outros setups, você pode precisar configurar o PostCSS.
+
+Instale o PostCSS e o Autoprefixer:
+
+````
+npm install -D postcss autoprefixer
+````
+
+Crie um arquivo `postcss.config.js` na raiz do projeto com o seguinte conteúdo:
+
+````
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+};
+````
+
+#### 5. Utilizando Tailwind CSS no Projeto
+
+Você pode começar a usar as classes utilitárias do Tailwind CSS em seus componentes. Por exemplo:
+
+````
+function App() {
+  return (
+    <div className="bg-blue-500 text-white p-4">
+      <h1 className="text-2xl font-bold">Hello, Tailwind CSS!</h1>
+    </div>
+  );
+}
+
+export default App;
+````
+
+Você pode personalizar o tema do Tailwind editando o arquivo `tailwind.config.js`, adicionando novas cores, espaçamentos, e outras customizações.
+
+#### 6. Formatação e Integração com o Editor
+
+Para garantir que o Tailwind funcione bem com seu editor de código, siga os passos abaixo:
+
+* Instale a extensão `Tailwind CSS IntelliSense` para obter auto-complete, dicas e a documentação do Tailwind direto no editor.
+
+* Adicione as seguintes configurações ao arquivo `settings.json` do VS Code:
+
+````
+{
+  "tailwindCSS.includeLanguages": {
+    "javascript": "javascript",
+    "javascriptreact": "javascriptreact",
+    "typescript": "typescript",
+    "typescriptreact": "typescriptreact"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  }
+}
+````
+
+#### 7. Build Final
+
+Ao finalizar o desenvolvimento, utilize o comando de build do Tailwind para gerar um CSS otimizado:
+
+````
+npx tailwindcss -o build.css --minify
+````
+
 ## Sobre o contrato inteligente
 
 ### Estrutura `Campaign`
