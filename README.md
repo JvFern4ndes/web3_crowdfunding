@@ -450,6 +450,65 @@ Ao finalizar o desenvolvimento, utilize o comando de build do Tailwind para gera
 npx tailwindcss -o build.css --minify
 ````
 
+### Ethers.js
+
+Este projeto utiliza a biblioteca `ethers.js` para interagir com a blockchain Ethereum. A seguir, estão os passos para instalar e configurar o `ethers.js`:
+
+#### 1. Instalação
+
+Execute o comando abaixo para instalar a biblioteca `ethers.js`:
+
+````
+npm install ethers
+````
+
+#### 2. Importação
+
+No arquivo JavaScript onde você deseja utilizar o `ethers.js`, importe a biblioteca:
+
+````
+const { ethers } = require("ethers");
+````
+
+#### 3. Configuração do Provedor
+
+Antes de realizar qualquer interação com a blockchain, configure um provedor. Um provedor é responsável por conectar-se a uma rede Ethereum.
+
+* Usando o Infura:
+
+````
+const provider = new ethers.providers.InfuraProvider("homestead", "YOUR_INFURA_PROJECT_ID");
+````
+
+#### 4. Criando uma Carteira
+
+Você pode criar uma nova carteira ou usar uma chave privada existente. 
+
+* Gerando uma nova carteira:
+
+````
+const wallet = ethers.Wallet.createRandom();
+console.log("Address: ", wallet.address);
+console.log("Private Key: ", wallet.privateKey);
+````
+
+* Usando uma chave privada existente:
+
+````
+const wallet = new ethers.Wallet("SUA_CHAVE_PRIVADA", provider);
+````
+
+#### 5. Exemplos de Uso
+
+* Consultar saldo de uma conta:
+
+````
+const address = "ENDEREÇO_DA_CONTA";
+provider.getBalance(address).then((balance) => {
+    console.log("Saldo: ", ethers.utils.formatEther(balance));
+});
+````
+
 ## Sobre o contrato inteligente
 
 ### Estrutura `Campaign`
@@ -856,6 +915,4 @@ Este projeto é licenciado sob a MIT License.
 6 - Sobre a utilização do infura para fazer o deploy <br />
 7 - Utilização do thirdweb para criar a interface (criada com vite) <br />
 8 - instalação do react-router-dom <br />
-9 - Sobre a instalação do tailwindcss <br />
-10 - instalação da biblioteca ethers.js <br />
 11 - A importância do toLowerCase na hora de comparar endereços. <br />
