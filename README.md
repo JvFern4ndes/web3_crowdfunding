@@ -165,6 +165,178 @@ Para instalar a biblioteca `web3.js`, use o `npm`:
 npm install web3
 ```
 
+#### Utilização da Biblioteca Web3.js para Interações com a Rede Sepolia
+
+Este documento descreve o processo de configuração e uso da biblioteca `web3.js` para interagir com a rede Sepolia. A partir da versão mais recente, a rede Goerli foi descontinuada, tornando a rede Sepolia a principal rede de testes. Devido a limitações de suporte de algumas bibliotecas, optei por utilizar `web3.js` para interações diretas com contratos inteligentes na rede Sepolia.
+
+### 1. Configuração Inicial
+
+#### 1.1 Instalação do Web3.js
+
+Para começar, precisamos instalar a biblioteca `web3.js` em nosso projeto:
+
+````
+npm install web3
+````
+
+#### 1.2 Criação do Componente de Contexto
+
+Criamos um componente `StateContextProvider` para gerenciar o estado global do Web3 e do contrato inteligente. Ele é responsável por inicializar o Web3 e fornecer métodos para interação com o contrato.
+
+````
+import React, { createContext, useEffect, useState, useContext } from 'react';
+import Web3 from 'web3';
+import CrowdFundingABI from '../../../web3/contracts/CrowdFundingABI.js';
+
+const StateContext = createContext();
+
+export const StateContextProvider = ({ children }) => {
+    const [web3, setWeb3] = useState(null);
+    const [contract, setContract] = useState(null);
+    const [address, setAddress] = useState(null);
+
+    useEffect(() => {
+        const initWeb3 = async () => {
+            if (window.ethereum) {
+                const web3Instance = new Web3(window.ethereum);
+                setWeb3(web3Instance);
+
+                const accounts = await web3Instance.eth.requestAccounts();
+                setAddress(accounts[0]);
+
+                const contractAddress = '0x55fb15f589e581329650af0b6bf2c9ded71f5352';
+                const contractInstance = new web3Instance.eth.Contract(
+                    CrowdFundingABI,
+                    contractAddress
+                );
+                setContract(contractInstance);
+            } else {
+                console.error('Por favor, instale uma carteira Ethereum como MetaMask.');
+            }
+        };
+
+        initWeb3();
+    }, []);
+
+    const publishCampaign = async (form) => {
+        try {
+            const data = await contract.methods
+                .createCampaign(
+                    address,
+                    form.title,
+                    form.description,
+                    form.target,
+                    new Date(form.deadline).getTime(),
+                    form.image
+                )
+                .send({ from: address });
+
+            console.log('contract call success', data);
+        } catch (error) {
+            console.log('contract call failure', error);
+        }
+    };
+
+    return (
+        <StateContext.Provider
+            value={{
+                address,
+                contract,
+                createCampaign: publishCampaign,
+            }}
+        >
+            {children}
+        </StateContext.Provider>
+    );
+};
+
+export const useStateContext = () => useContext(StateContext);
+````
+
+#### 2. Integração com o React
+
+#### 2.1 Encapsulamento do `StateContextProvider`
+
+Para garantir que o estado do Web3 e do contrato inteligente seja gerenciado corretamente, encapsulamos o `StateContextProvider` em um componente de nível superior, que é então usado no arquivo principal do React:
+
+````
+import process from 'process';
+import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Web3 from 'web3';
+import { StateContextProvider } from './context';
+import App from './App';
+import './output.css';
+
+if (typeof window !== 'undefined') {
+    window.process = process;
+}
+
+const AppContainer = () => {
+    const [web3, setWeb3] = useState(null);
+
+    useEffect(() => {
+        const initWeb3 = async () => {
+            if (window.ethereum) {
+                await window.ethereum.request({ method: 'eth_requestAccounts' });
+                const web3Instance = new Web3(window.ethereum);
+                setWeb3(web3Instance);
+            } else {
+                console.error('Por favor, instale uma carteira Ethereum como MetaMask.');
+            }
+        };
+
+        initWeb3();
+    }, []);
+
+    return (
+        <StateContextProvider>
+            <App web3={web3} />
+        </StateContextProvider>
+    );
+};
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+root.render(
+    <Router>
+        <AppContainer />
+    </Router>,
+);
+````
+
+#### 3. Uso das Funções do Contrato
+
+#### 3.1 Criação de uma Campanha
+
+Dentro do `StateContextProvider`, criamos a função `publishCampaign` que utiliza o método `createCampaign` do contrato inteligente. Essa função é responsável por enviar os dados da nova campanha para a blockchain:
+
+````
+const publishCampaign = async (form) => {
+    try {
+        const data = await contract.methods
+            .createCampaign(
+                address,
+                form.title,
+                form.description,
+                form.target,
+                new Date(form.deadline).getTime(),
+                form.image
+            )
+            .send({ from: address });
+
+        console.log('contract call success', data);
+    } catch (error) {
+        console.log('contract call failure', error);
+    }
+};
+````
+
+#### 4. Conclusão
+
+Esse processo permite que sua aplicação React interaja diretamente com um contrato inteligente na rede Sepolia usando `web3.js`. A configuração abordada garante que as interações com a blockchain sejam gerenciadas de maneira eficiente e com o devido suporte de estado dentro da aplicação.
+
 ##
 
 ### Solc
@@ -221,6 +393,8 @@ Embora `Thirdweb` ofereça muitas vantagens, enfrentei dificuldades ao tentar ut
 #### Alternativa: Deploy com Web3.js
 
 Devido às dificuldades encontradas com o `Thirdweb`, decidi usar a biblioteca `web3.js` para fazer o deploy do contrato inteligente. [Aqui você encontrará os detalhes de como eu consegui fazer o deploy do contrato.](#deploy-do-contrato-com-web3js)
+
+##
 
 ### ESLint e Prettier
 
@@ -327,6 +501,8 @@ Para verificar o código e aplicar correções automáticas, execute o ESLint co
 ````sh
 yarn lint --fix
 ````
+
+##
 
 ### Tailwind CSS
 
@@ -449,6 +625,8 @@ Ao finalizar o desenvolvimento, utilize o comando de build do Tailwind para gera
 ````
 npx tailwindcss -o build.css --minify
 ````
+
+##
 
 ### Ethers.js
 
