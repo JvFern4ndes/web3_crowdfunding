@@ -10,9 +10,8 @@ Este projeto é uma plataforma de financiamento coletivo (crowdfunding) baseada 
 4. [Dependências](#dependências)
 5. [Sobre o contrato inteligente](#sobre-o-contrato-inteligente)
 6. [Deploy do contrato com web3js](#Deploy-do-contrato-com-web3js)
-7. [Comandos Úteis](#comandos-úteis)
-8. [Contribuindo](#contribuindo)
-9. [Licença](#licença)
+7. [Contribuindo](#contribuindo)
+8. [Licença](#licença)
 
 ## Introdução
 
@@ -1064,21 +1063,53 @@ deploy();
 
 O arquivo `deploy.js` automatiza a implantação do contrato `CrowdFunding.sol` na rede de teste Sepolia, garantindo que todos os passos, desde a configuração do provedor até o envio da transação, sejam realizados de forma segura e eficiente.
 
-## Comandos Úteis
+### Terceiro passo: Utilizando Infura para Conectar ao Ethereum
 
-```sh
-# Para instalar dependências
-npm install
+Neste projeto, utilizamos o Infura como provedor de infraestrutura para conectar à rede Ethereum. Abaixo estão os passos para configurar e utilizar o Infura.
 
-# Para compilar os contratos inteligentes
-npx hardhat compile
+#### 1. Criar uma Conta no Infura
 
-# Para rodar os testes
-npx hardhat test
+* Acesse [Infura](https://infura.io/).
+* Crie uma conta ou faça login se já tiver uma.
+* No painel de controle, crie um novo projeto.
+* Copie o `PROJECT ID` do seu projeto. Você precisará dele para conectar ao Ethereum.
 
-# Para implantar os contratos
-npx hardhat run scripts/deploy.js --network <network-name>
-```
+#### 2. Configurar Variáveis de Ambiente
+
+Crie um arquivo .env na raiz do seu projeto (se ainda não existir) e adicione as seguintes variáveis:
+
+````
+INFURA_PROJECT_ID=your_infura_project_id
+ACCOUNT_ADDRESS=your_ethereum_account_address
+PRIVATE_KEY=your_private_key
+````
+
+Substitua your_infura_project_id pelo PROJECT ID copiado no passo anterior, e adicione o endereço da sua conta Ethereum e a chave privada correspondente.
+
+#### 3. Atualizar o Código para Usar Infura
+
+No arquivo `deploy.js`, a conexão com a rede Sepolia é estabelecida da seguinte forma:
+
+````
+import Web3 from 'web3';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const web3 = new Web3(new Web3.providers.HttpProvider(`https://sepolia.infura.io/v3/${process.env.INFURA_PROJECT_ID}`));
+````
+
+Aqui, estamos utilizando o `INFURA_PROJECT_ID` definido no arquivo `.env` para conectar à rede Sepolia através do Infura.
+
+#### 4. Deploy do Contrato Inteligente
+
+Agora que a conexão está configurada, você pode seguir com o deploy do seu contrato inteligente, utilizando o script `deploy.js` conforme mostrado abaixo:
+
+````
+node deploy.js
+````
+
+Este comando irá implantar o contrato na rede Ethereum através da infraestrutura da Infura.
 
 ## Contribuindo
 
@@ -1090,7 +1121,4 @@ Este projeto é licenciado sob a MIT License.
 
 # Backlog da Documentação
 
-6 - Sobre a utilização do infura para fazer o deploy <br />
-7 - Utilização do thirdweb para criar a interface (criada com vite) <br />
-8 - instalação do react-router-dom <br />
 11 - A importância do toLowerCase na hora de comparar endereços. <br />
